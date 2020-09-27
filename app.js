@@ -5,6 +5,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var compression = require('compression');
+var helmet = require('helmet');
+
+
 
 //mongodb+srv://admin:<password>@cluster0.inyjd.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority
 var mongoDB = 'mongodb+srv://admin:admin123@cluster0.inyjd.gcp.mongodb.net/TodoList?retryWrites=true&w=majority'
@@ -17,6 +21,8 @@ var indexRouter = require('./routes/index');
 var app = express();
 
 // view engine setup
+app.use(compression());
+app.use(helmet());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
