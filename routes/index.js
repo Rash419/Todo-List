@@ -6,6 +6,9 @@ var todoTaskModel = require('../models/TodoTask');
 router.get('/',function(req,res,next){
     res.render('login');
 });
+router.get('/signup',function(req,res,next){
+    res.render('signup');
+});
 
 /*router.get('/', function (req, res, next) {
   todoTaskModel.find({},(err,tasks) => {
