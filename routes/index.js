@@ -3,7 +3,11 @@ var router = express.Router();
 var todoTaskModel = require('../models/TodoTask');
 /* GET home page. */
 
-router.get('/', function (req, res, next) {
+router.get('/',function(req,res,next){
+    res.render('login');
+});
+
+/*router.get('/', function (req, res, next) {
   todoTaskModel.find({},(err,tasks) => {
     if(err) { return next(err) };
     res.render('index',{todotask : tasks});
