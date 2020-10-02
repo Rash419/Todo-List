@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 
 <head>
-  
   <title>Todo App</title>
   <link rel="stylesheet" href="/stylesheets/style.css" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Candal|Chewy&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
     integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
 </head>
 
 <body>
+  <div class="topnav">
+    <a class="active" href="#home">Home</a>
+    <a href="#Signup">Signup</a>
+    <a href="#about">About</a>
+    <div class="login-container">
+      <form action="/login" method="POST">
+        <input type="text" placeholder="Username" name="username">
+        <input type="text" placeholder="Password" name="pwd">
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+
   <div class="todo-container">
     <h2>To-Do List</h2>
     <div class="todo">
