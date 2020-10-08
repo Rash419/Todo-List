@@ -1,10 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var todoTaskModel = require('../models/TodoTask');
-/* GET home page. */
-
-
-
 
 router.get('/:userId', function (req, res, next) {
   
