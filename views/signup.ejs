@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 
 <head>
     <title>Todo List</title>
@@ -13,20 +13,29 @@
         <div class="login-form">
             <form action="/signup" method="POST">
                 <h3>Username:</h3>
-                <input type="text" placeholder="Username" name="username"/>
+                <input type="text" placeholder="Username" name="username" value = '<%=  (typeof form === 'undefined' ? '' : form.username) %>' />
                 <br>
                 <h3>Password:</h3>
-                <input type="password" placeholder="Password" name="password" />
+                <input type="password" placeholder="Password" name="password" value = '<%= ( typeof form === 'undefined' ? '' : form.password) %>' />
                 <br>
                 <h3>Confirm Password:</h3>
-                <input type="password" placeholder="Password" name="confirm_password"/>
+                <input type="password" placeholder="Confirm Password" name="confirm_password" value = '<%= ( typeof form === 'undefined' ? '' : form.confirm_password) %>' />
                 <br>
                 <h3>Email:</h3>
-                <input type="text" placeholder="Email" name="email"/>
+                <input type="text" placeholder="Email" name="email" value = '<%= ( typeof form === 'undefined' ? '' : form.email) %>' />
                 <br>
-                <input type="button" value="Submit" class="login-button" />
+                <input type="submit" value="Submit" class="login-button" />
                 <br>
             </form>
         </div>
     </div>
+
+    <% if(typeof errors != 'undefined'){ %>
+    <ul>
+        <% errors.forEach(error => { %>
+        <li>
+            <%= error.msg %>
+        </li>
+        <% }) %>
+    <% } %>
 </body>

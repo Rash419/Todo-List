@@ -8,14 +8,14 @@ var bodyParser = require('body-parser');
 var compression = require('compression');
 var helmet = require('helmet');
 
-
-
 //mongodb+srv://admin:<password>@cluster0.inyjd.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority
 var mongoDB = 'mongodb+srv://admin:admin123@cluster0.inyjd.gcp.mongodb.net/TodoList?retryWrites=true&w=majority'
 mongoose.connect(mongoDB,{useNewUrlParser:true,useUnifiedTopology:true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+//var indexRouter = require('./routes/index');
+var userRouter = require('./routes/user');
 var indexRouter = require('./routes/index');
 
 var app = express();
@@ -27,7 +27,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
-app.use('/', indexRouter);
+app.use('/user', indexRouter);
+app.use('/',userRouter);
 app.use(logger('dev'));
 
 app.use(cookieParser());

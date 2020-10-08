@@ -49,7 +49,7 @@ body {
     outline:none;
     padding-left:10px;
   }
-  .login-form input[type="button"] {
+  .login-form input[type="submit"] {
     height:30px;
     width:100px;
     background:#fff;
