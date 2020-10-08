@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <div class="topnav">
+ <!-- <div class="topnav">
     <a class="active" href="#home">Home</a>
     <a href="#Signup">Signup</a>
     <a href="#about">About</a>
@@ -21,12 +21,12 @@
         <button type="submit">Login</button>
       </form>
     </div>
-  </div>
+  </div>-->
 
   <div class="todo-container">
     <h2>To-Do List</h2>
     <div class="todo">
-      <form action="/addTask" method="POST" class="todo-header">
+      <form action="" method="POST" class="todo-header">
         <input type="text" name="content">
         <button type="submit"><span class="fas fa-plus"></span></button>
       </form>
@@ -34,10 +34,10 @@
         <%todotask.forEach(details => {%>
         <li class="todo-list-item">
           <div class="todo-list-item-name"><%= details.content %></div>
-          <a href="/edit/<%= details._id%>" class="edit">
+          <a href="<%= details.user%>/edit/<%= details._id%>" class="edit">
             <span class="fas fa-edit"></span>
           </a>
-          <a href="/remove/<%= details._id%>" class="remove">
+          <a href="<%= details.user%>/remove/<%= details._id%>" class="remove">
             <span class="fas fa-times"></span>
           </a>
         </li>

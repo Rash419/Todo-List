@@ -6,52 +6,54 @@ var todoTaskModel = require('../models/TodoTask');
 
 
 
-/*router.get('/:id', function (req, res, next) {
+router.get('/:userId', function (req, res, next) {
   
-  todoTaskModel.findById({},(err,tasks) => {
+  todoTaskModel.find({user : req.params.userId},(err,tasks) => {
     if(err) { return next(err) };
     res.render('index',{todotask : tasks});
   });
 });
 
-router.post('/user/:id/addTask', async (req, res, next) => {
+router.post('/:userId', async (req, res, next) => {
   console.log(req.body);
   const todoTask = new todoTaskModel({
     content: req.body.content,
+    user : req.params.userId,
   });
 
   try {
     await todoTask.save();
-    res.redirect('/');
+    res.redirect('/user/'+req.params.userId);
   }
   catch (err) {
-    res.redirect('/');
+    res.redirect('/user/'+req.params.userId);
   }
 });
 
-router.get("/user/:id/edit/:id",(req,res,next) => {
-  const id = req.params.id;
-  todoTaskModel.find({},function(err,tasks){
-    if(err) {return next(erSr)}
-    res.render("indexEdit",{todotask : tasks,idTask : id});
+
+router.get("/:userId/edit/:taskId",(req,res,next) => {
+  const taskId = req.params.taskId;
+  const userId = req.params.userId;
+
+  todoTaskModel.find({user:userId},function(err,tasks){
+    if(err) {return next(err)}
+    res.render("indexEdit",{todotask : tasks,idTask : taskId,idUser : userId});
   })
 })
 
-router.post("/user/:id/edit/:id",(req,res,next) => {
-  todoTaskModel.findByIdAndUpdate(req.params.id,{content : req.body.content}, err => {
+router.post("/:userId/edit/:taskId",(req,res,next) => {
+  todoTaskModel.findByIdAndUpdate(req.params.taskId,{content : req.body.content}, err => {
     if(err) {return next(err)}
-    res.redirect("/");
+    res.redirect('/user/'+req.params.userId);
   })
 })
 
-router.get("/user/:id/remove/:id",(req,res,next) => {
-  todoTaskModel.findByIdAndRemove(req.params.id, err=> {
+
+router.get("/:userId/remove/:taskId",(req,res,next) => {
+  todoTaskModel.findByIdAndRemove(req.params.taskId, err=> {
     if(err) {return next(err)}
-    res.redirect("/");
+    res.redirect('/user/'+req.params.userId);
   })
-})
-/*router.post('/addTask',function(req,res,next){
-  console.log('post method');
-})*/
+});
 
 module.exports = router;

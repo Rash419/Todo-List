@@ -11,7 +11,7 @@
 <body>
 
     <body>
-        <div class="topnav">
+        <!--<div class="topnav">
             <a class="active" href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
@@ -22,7 +22,7 @@
                     <button type="submit">Login</button>
                 </form>
             </div>
-        </div>
+        </div>-->
         <div class="todo-container">
             <h2>To-Do List</h2>
             <div class="todo">
@@ -34,18 +34,20 @@
                     <% todotask.forEach(details => { %>
                     <% if (details._id == idTask) { %>
                     <li class="todo-list-item">
-                        <form action="/edit/<%= details._id %>" method="POST">
+                        <form action="/user/<%= details.user%>/edit/<%= details._id %>" method="POST">
                             <input type="text" value="<%= details.content %>" name="content">
                             <button type="submit">Confirm</button>
-                            <a href="/" class="cancel">Cancel</a>
+                            <a href="/user/<%= details.user%>" class="cancel">Cancel</a>
                         </form>
                     </li>
                     <% } else { %>
                     <li class="todo-list-item">
                         <div class="todo-list-item-name"><%= details.content %></div>
-                        <a href="/edit/<%= details._id %>" class="edit"> <span class="fas fa-edit"></span>
+                        <a href="/user/<%= details.user%>/edit/<%= details._id%>" class="edit">
+                            <span class="fas fa-edit"></span>
                         </a>
-                        <a href="/remove/<%= details._id %>" class="remove"> <span class="fas fa-times"></span>
+                        <a href="/user/<%= details.user%>/remove/<%= details._id%>" class="remove">
+                            <span class="fas fa-times"></span>
                         </a>
                     </li>
                     <% } %>
