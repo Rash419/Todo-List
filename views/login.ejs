@@ -1,0 +1,35 @@
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Candal|Chewy&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/login.css" type="text/css">
+</head>
+
+<body>
+  <div class="login">
+    <div class="login-form">
+      <form method="POST" action="/">
+        <h3>Username:</h3>
+        <input type="text" placeholder="Username" name="username"
+          value='<%=  (typeof form === 'undefined' ? '' : form.username) %>' /><br>
+        <h3>Password:</h3>
+        <input type="password" placeholder="Password" name='password'
+          value='<%=  (typeof form === 'undefined' ? '' : form.password) %>' />
+        <br>
+        <input type="submit" value="Login" class="login-button" />
+        <br>
+        <a href="/signup" class="sign-up">Sign Up!</a>
+        <br>
+      </form>
+    </div>
+  </div>
+
+  <% if(typeof errors != 'undefined'){ %>
+  <ul>
+    <% errors.forEach(error => { %>
+    <li>
+      <%= error.msg %>
+    </li>
+    <% }) %>
+    <% } %>
+</body>
